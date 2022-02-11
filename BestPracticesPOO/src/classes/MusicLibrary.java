@@ -7,6 +7,7 @@ package classes;
  */
 public abstract class MusicLibrary {
     
-   abstract public void GoLibrary();
+        
+        abstract public void GoLibrary();
     
 }

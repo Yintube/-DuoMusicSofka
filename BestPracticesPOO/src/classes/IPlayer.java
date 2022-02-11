@@ -10,4 +10,8 @@ package classes;
  */
 public interface IPlayer {
     
+    public void toPlay();
+    public void toStop();
+    
+    
 }
