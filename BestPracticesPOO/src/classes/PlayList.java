@@ -8,7 +8,7 @@ package classes;
 public class PlayList extends MusicLibrary implements IPlayer {
 
     @Override
-    public void GoLibrary() {
+    public void GoLibrary(Songs[] songs) {
         
     }
 
