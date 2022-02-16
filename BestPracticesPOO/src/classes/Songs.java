@@ -8,7 +8,6 @@ package classes;
 public class Songs {
     private int identifier, year, duration;
     private String title, genre,coverPage, description;
-
     /**
      * Metodo constructor
      * @param identifier
@@ -90,4 +89,5 @@ public class Songs {
     public void setDescription(String description) {
         this.description = description;
     }
+    
 }

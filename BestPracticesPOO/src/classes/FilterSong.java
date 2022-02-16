@@ -108,7 +108,7 @@ public class FilterSong extends MusicLibrary implements IPlayer {
     public void GenreFilter(Songs[] songs) {
         System.out.println("Lista de canciones del Genero " + getGenre2());
         for (int i = 0; i < songs.length; i++) {
-            if (songs[i].getGenre() == getGenre2()) {
+            if (songs[i].getGenre().equals(getGenre2())) {
                 System.out.println(songs[i].getIdentifier() + ". " + songs[i].getTitle());
             }
 

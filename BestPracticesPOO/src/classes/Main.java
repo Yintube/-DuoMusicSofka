@@ -7,7 +7,8 @@ package classes;
 public class Main {
 
     public static void main(String[] args) {
-
+        
+              
         Songs SongList[] = new Songs[20];
 
         SongList[0] = new Songs(1, 2011, 354, "Bohemian Rhapsody - Remastered", "Rock",
@@ -74,8 +75,17 @@ public class Main {
         System.out.println("**************************************************");
         System.out.println("   Bienvenid@ a la bibliotecta -DuoMusicSofka-");
         System.out.println("**************************************************");
-        System.out.println("");
+        System.out.println("");  
+        
+        
+        
         MusicLibrary courier = new PlayList();
         courier.AccessToLibrary(SongList);
+       
+        
+       }
+
     }
-}
+    
+
+
