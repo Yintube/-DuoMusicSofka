@@ -1,14 +1,20 @@
 package classes;
 
 /**
+ * Representa la clase Main o Principal del paquete classes, contribuye con la ejecucion del programa.
  *
- * @author 
+ * @version 1.0.0 2021-17-02, La clase corresponde a la versión 1 del sistema
+ *       
+ * @author Mauro Villada Villada - mauro1040@gmail.com
+ *         Yineth Vargas Guerrero - yvargas703@misena.edu.co  
  */
 public class Main {
 
     public static void main(String[] args) {
-            
-        Songs SongList[] = new Songs[20];
+        /**
+         *Inicialización del vector instanciado con la clase Songs, contiene objetos cancion.
+         */ 
+        Songs SongList[] = new Songs[20]; 
 
         SongList[0] = new Songs(1, 2011, 354, "Bohemian Rhapsody - Remastered", "Rock",
                 "https://www.queenonline.com/global/assets/modules/site/images/music/ANATO.jpg",
@@ -75,7 +81,11 @@ public class Main {
         System.out.println("   Bienvenid@ a la bibliotecta -DuoMusicSofka-");
         System.out.println("**************************************************");
         System.out.println("");   
-        MusicLibrary courier = new PlayList();
+        /**
+         * Creación del objeto courier como mensajero entre classes.
+         */
+        MusicLibrary courier = new PlayList(); 
+        
         courier.AccessToLibrary(SongList);
        }
 

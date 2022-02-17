@@ -1,18 +1,36 @@
 package classes;
-
+/**
+ * Importación de libreria JOptionPane, muestra cuadros de dialogo para interactuar con el usuario. 
+ */
 import javax.swing.JOptionPane;
 
 /**
+ * Representa la clase FilterSong del paquete classes, filtra canciones por género o por año.
  *
- * @author
+ * @version 1.0.0 2021-17-02, La clase corresponde a la versión 1 del sistema
+ *       
+ * @author Mauro Villada Villada - mauro1040@gmail.com
+ *         Yineth Vargas Guerrero - yvargas703@misena.edu.co  
  */
 public class FilterSong extends MusicLibrary implements IPlayer {
-
+    /**
+     * Declaración de variables modificadas, para realizar la comparación, cuando el programa recorra la biblioteca de canciones.
+     * Siendo estas las que seleccione el usuario.
+     */
     private String genre2;
     private int year2 = 0;
-
+    /**
+     * Método heredado de la clase abstracta MusicLibrary. 
+     * Con la propiedad sobre escritura.
+     * 
+     * @param songs 
+     */
     @Override
     public void GoLibrary(Songs[] songs) {
+        /**
+         * Inicialización de variables para recorrer bucles y tener opciones de selección del programa.
+         * @throws Se utiliza la excepción, para que el programa le informe al usuario que digitó una opción no valida.
+         */
         int flag = 0;
         int option = 0;
         do {
@@ -129,13 +147,12 @@ public class FilterSong extends MusicLibrary implements IPlayer {
     }
 
     /**
-     * Este método permite recorrer el arreglo de la lista de canciones y
-     * mostrar en consola la lista acorde al genero seleccionado por el usuario
+     * Este método permite recorrer el arreglo de la biblioteca de canciones y
+     * mostrar en consola la lista acorde al género seleccionado por el usuario.
      *
      * @param songs
      */
     public void GenreFilter(Songs[] songs) {
-        //int optionPlay = 0;
         System.out.println("Lista de canciones del Genero " + getGenre2());
         for (int i = 0; i < songs.length; i++) {
             if (songs[i].getGenre().equals(getGenre2())) {
@@ -199,16 +216,19 @@ public class FilterSong extends MusicLibrary implements IPlayer {
     public void setYear2(int year2) {
         this.year2 = year2;
     }
-
+    /**
+     * Método implementado de la interfaz IPlayer, reproduce el listado de canciones.
+     */
     @Override
     public void toPlay() {
         JOptionPane.showMessageDialog(null, "Reproduciendo Música", "Play", JOptionPane.INFORMATION_MESSAGE);
     }
-
+    /**
+     * Método implementado de la interfaz IPlayer, detiene la reproducción de canciones.
+     */
     @Override
     public void toStop() {
-        System.out.println("La reprodución se ha detenido");
+        JOptionPane.showMessageDialog(null, "Reproducción detenida", "Play", JOptionPane.INFORMATION_MESSAGE);
 
     }
-
 }

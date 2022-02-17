@@ -2,14 +2,27 @@
 package classes;
 
 /**
- * Esta clase permite establecer atributos que luego seran usados para construir objetos de tipo canción.
- * @author Mauro Villada Villada, mauro1040@gmail.com
+ * Representa la clase Songs, establece atributos que se usaran para construir objetos tipo canción.
+ *
+ * @version 1.0.0 2021-17-02, La clase corresponde a la versión 1 del sistema
+ *       
+ * @author Mauro Villada Villada - mauro1040@gmail.com
+ *         Yineth Vargas Guerrero - yvargas703@misena.edu.co
  */
 public class Songs {
-    private int identifier, year, duration;
-    private String title, genre,coverPage, description;
     /**
-     * Metodo constructor
+     * Declaración de atributos para objetos Songs o canción.
+     */
+    private int identifier;
+    private int year;
+    private int duration;        
+    private String title;
+    private String genre;
+    private String coverPage;
+    private String description;
+    
+    /**
+     * Metodo constructor instancia un objeto
      * @param identifier
      * @param year
      * @param duration
@@ -31,7 +44,8 @@ public class Songs {
    
 
     /**
-     * Metodos getter and setter parra obtener o modificar los atributos de la clase Song
+     * Encapsulamiento, creación de métodos getter and setter parra obtener o modificar los atributos de la clase Song.
+     * Como buena práctica es aconsejable crear solo los get, pero decidimos implementar los set.
      * @return
      */
     public int getIdentifier() {

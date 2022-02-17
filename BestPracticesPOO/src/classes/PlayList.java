@@ -1,16 +1,32 @@
 package classes;
-
+/**
+ * Importación de libreria JOptionPane, muestra cuadros de dialogo para interactuar con el usuario. 
+ */
 import javax.swing.JOptionPane;
 
 /**
+ * Representa la clase PlayList del paquete classes, crea una lista de canciones desde el vector.
+ * Mostrando el nuevo listado escogido por el usuario.
  *
- * @author Yineth Vargas
+ * @version 1.0.0 2021-17-02, La clase corresponde a la versión 1 del sistema
+ *       
+ * @author  Yineth Vargas Guerrero - yvargas703@misena.edu.co
+ *          Mauro Villada Villada - mauro1040@gmail.com
+ *           
  */
 public class PlayList extends MusicLibrary implements IPlayer {
-
+    /**
+     * Método heredado de la clase abstracta MusicLibrary. 
+     * Con la propiedad sobre escritura.
+     * 
+     * @param songs 
+     */
     @Override
     public void GoLibrary(Songs[] songs) {
-
+        /**
+         * Inicialización de variables para recorrer bucles y tener opciones de selección del programa.
+         * @throws Se utiliza la excepción, para que el programa le informe al usuario que digitó una opción no valida.
+         */        
         int flag = 0;
         int option = 0;
         String playListName;
@@ -53,19 +69,28 @@ public class PlayList extends MusicLibrary implements IPlayer {
         } while (flag != 2);
 
     }
-
+    /**
+     * Este método permite recorrer el arreglo de la biblioteca de canciones y mostrar
+     * en consola la lista de todas las canciones que el usuario puede seleccionar. 
+     * @param songs 
+     */
     public void ShowList(Songs[] songs) {
-
         for (int i = 0; i <= songs.length - 1; i++) {
             System.out.println(songs[i].getIdentifier() + ". " + songs[i].getTitle());
         }
     }
+    /**
+     * Este método toma de las opciones seleccionadas por el usuario y crea una nueva lista con un máximo de 10 canciones mostrandola por consola.
+     * @param songs
+     * @param playListName 
+     */
 
     public void NewPlayList(Songs[] songs, String playListName) {
         int optionList = 0;
         Songs newSongList[] = new Songs[10];
 
         for (int i = 0; i <= newSongList.length - 1; i++) {
+            // Excepción por si el usuario digíta una opcion diferente.
             try {
                 optionList = Integer.parseInt(JOptionPane.showInputDialog("Por favor ingrese el numero de la canción deseada"));              
                 newSongList[i] = songs[optionList - 1];
@@ -83,16 +108,19 @@ public class PlayList extends MusicLibrary implements IPlayer {
             toPlay();
         }
     }
-
+    /**
+     * Método implementado de la interfaz IPlayer, reproduce el listado de canciones.
+     */
     @Override
     public void toPlay() {
         JOptionPane.showMessageDialog(null, "Reproduciendo Música", "Play", JOptionPane.INFORMATION_MESSAGE);
     }
-
+    /**
+     * Método implementado de la interfaz IPlayer, detiene la reproducción de canciones.
+     */
     @Override
     public void toStop() {
-       
-
+        JOptionPane.showMessageDialog(null, "Reproducción detenida", "Play", JOptionPane.INFORMATION_MESSAGE);   
     }
 
 }   

@@ -1,18 +1,31 @@
 package classes;
-
+/**
+ * Importación de libreria JOptionPane, muestra cuadros de dialogo para interactuar con el usuario. 
+ */
 import javax.swing.JOptionPane;
 
 /**
- * Esta clase solicita al usuario como desea reordenar la lista de la
- * biblioteca, si por fecha o por duración, se hace uso de algoritmo de
- * burbubuja para reordenar.
- * @author
+ * Representa la clase OrganizaSongs del paquete classes, Ordena las canciones por año o duración, mostrando la selección de canciones por el usuario.
+ * Se hace uso de algoritmo de burbuja para reordenar.
+ * 
+ * @version 1.0.0 2021-17-02, La clase corresponde a la versión 1 del sistema
+ *       
+ * @author Mauro Villada Villada - mauro1040@gmail.com
+ *         Yineth Vargas Guerrero - yvargas703@misena.edu.co  
  */
 public class OrganizeSongs extends MusicLibrary implements IPlayer {
-
+    /**
+     * Método heredado de la clase abstracta MusicLibrary. 
+     * Con la propiedad sobre escritura.
+     * 
+     * @param songs 
+     */
     @Override
     public void GoLibrary(Songs[] songs) {
-
+        /**
+         * Inicialización de variables para recorrer bucles y tener opciones de selección del programa.
+         * @throws Se utiliza la excepción, para que el programa le informe al usuario que digitó una opción no valida.
+         */ 
         int flag = 0;
         int option = 0;
 
@@ -55,8 +68,7 @@ public class OrganizeSongs extends MusicLibrary implements IPlayer {
     }
 
     /**
-     * Método para reordenar arreglo por fecha, se usa algoritmo de burbuja para
-     * lograr el objetivo.
+     * Método para reordenar arreglo por fecha, se usa algoritmo de burbuja para lograr el objetivo.
      *
      * @param songs
      */
@@ -87,8 +99,7 @@ public class OrganizeSongs extends MusicLibrary implements IPlayer {
     }
 
     /**
-     * Método para reordenar arreglo por duración, se usa algoritmo de burbuja
-     * para lograr el objetivo.
+     * Método para reordenar arreglo por duración, se usa algoritmo de burbuja para lograr el objetivo.
      *
      * @param songs
      */
@@ -117,17 +128,19 @@ public class OrganizeSongs extends MusicLibrary implements IPlayer {
 
         }
     }
-
     /**
-     * Implementación de los métodos definidos en la interfaz
+     * Método implementado de la interfaz IPlayer, reproduce el listado de canciones.
      */
     @Override
     public void toPlay() {
         JOptionPane.showMessageDialog(null, "Reproduciendo Música", "Play", JOptionPane.INFORMATION_MESSAGE);
     }
-
+    /**
+     * Método implementado de la interfaz IPlayer, detiene la reproducción de canciones.
+     */
     @Override
     public void toStop() {
+        JOptionPane.showMessageDialog(null, "Reproducción detenida", "Play", JOptionPane.INFORMATION_MESSAGE);
 
     }
 

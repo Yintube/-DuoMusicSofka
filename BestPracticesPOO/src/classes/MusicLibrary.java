@@ -1,17 +1,33 @@
 package classes;
-
+/**
+ * Importación de libreria JOptionPane, muestra cuadros de dialogo para interactuar con el usuario. 
+ */
 import javax.swing.JOptionPane;
 
 /**
+ * Representa la clase abstracta del paquete classes. Define características de otras clases.
+ * Contiene métodos abstractos que comparte con las demás.
  *
- * @author
+ * @version 1.0.0 2021-17-02, La clase corresponde a la versión 1 del sistema
+ *       
+ * @author Mauro Villada Villada - mauro1040@gmail.com
+ *         Yineth Vargas Guerrero - yvargas703@misena.edu.co
  */
 public abstract class MusicLibrary {
-
+    /**
+     * Método abstracto para ir desde las otras clases a la biblioteca de canciones o vector.
+     * @param songs 
+     */
     abstract public void GoLibrary(Songs[] songs);
-
+    /**
+     * Método para acceder a cada objeto del vector.
+     * @param songs 
+     */
     public void AccessToLibrary(Songs[] songs) {
-
+        /**
+         * Inicialización de variables para recorrer bucles y tener opciones de selección del programa.
+         * @throws Se utiliza la excepción, para que el programa le informe al usuario que digitó una opción no valida.
+         */
         int flag = 0;
         int option = 0;
 
@@ -24,7 +40,7 @@ public abstract class MusicLibrary {
                             + "3. Ordenar Canciones" + "\n"
                             + "4. Salir"));
                 } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, "El valor de tipo String contiene caracteres no numéricos", "ERROR", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "El valor de ingresado contiene caracteres no numéricos", "ERROR", JOptionPane.ERROR_MESSAGE);
                     flag = 0;
                     option = 0;
                 }
@@ -38,7 +54,6 @@ public abstract class MusicLibrary {
 
             switch (option) {
                 case 1:
-
                     MusicLibrary courier1 = new PlayList();
                     courier1.GoLibrary(songs);
                     break;
