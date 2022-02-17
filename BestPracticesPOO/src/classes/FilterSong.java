@@ -1,5 +1,7 @@
 package classes;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author
@@ -15,51 +17,51 @@ public class FilterSong extends MusicLibrary implements IPlayer {
         int option = 0;
         do {
             do {
-                System.out.println("");
-                System.out.println("Por favor ingrese el núemero de la opcion deseada ");
-                System.out.println("");
-                System.out.println("    1. Filtrar por genero.");
-                System.out.println("    2. Filtrar año.");
-                System.out.println("    3. Menú anterior");
-                System.out.println("");
-                option = input.nextInt();
+                try {
+                    option = Integer.parseInt(JOptionPane.showInputDialog("Por favor ingrese el numero de la opción deseada" + "\n"
+                            + "1. Filtrar por genero" + "\n"
+                            + "2. Filtrar año" + "\n"
+                            + "3. Menú anterior" + "\n"));
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "El valor de tipo String contiene caracteres no numéricos", "ERROR", JOptionPane.ERROR_MESSAGE);
+                    flag = 0;
+                    option = 0;
+                }
 
                 if (option >= 1 && option <= 3) {
                     flag = 1;
                 } else {
-                    System.out.println("--------------------------------");
-                    System.out.println("No disponible, vuelva a intentar");
-                    System.out.println("--------------------------------");
+                    JOptionPane.showMessageDialog(null, "Opción no disponible, vuelva a intentar", "Alerta", JOptionPane.WARNING_MESSAGE);
                 }
 
             } while (flag == 0);
             switch (option) {
                 case 1:
                     int flag2 = 0;
-                    int option2 = 0;
+                    int genreOption = 0;
                     do {
                         do {
-                            System.out.println("");
-                            System.out.println("Por favor ingrese el número del genero que desea filtrar");
-                            System.out.println("");
-                            System.out.println("    1. Rock.");
-                            System.out.println("    2. Salsa.");
-                            System.out.println("    3. Boleros y Tango.");
-                            System.out.println("    4. Balada Romantica.");
-                            System.out.println("    5. Menú anterior");
-                            System.out.println("");
-                            option2 = input.nextInt();
+                            try {
+                                genreOption = Integer.parseInt(JOptionPane.showInputDialog("Por favor ingrese el número del genero que desea filtrar" + "\n"
+                                        + "1. Rock" + "\n"
+                                        + "2. Salsa" + "\n"
+                                        + "3. Boleros y Tango" + "\n"
+                                        + "4. Balada Romantica" + "\n"
+                                        + "5. Menú anterior" + "\n"));
+                            } catch (Exception e) {
+                                JOptionPane.showMessageDialog(null, "El valor de tipo String contiene caracteres no numéricos", "ERROR", JOptionPane.ERROR_MESSAGE);
+                                flag2 = 0;
+                                genreOption = 0;
+                            }
 
-                            if (option2 >= 1 && option2 <= 5) {
+                            if (genreOption >= 1 && genreOption <= 5) {
                                 flag2 = 1;
                             } else {
-                                System.out.println("--------------------------------");
-                                System.out.println("No disponible, vuelva a intentar");
-                                System.out.println("--------------------------------");
+                                JOptionPane.showMessageDialog(null, "Opción no disponible, vuelva a intentar", "Alerta", JOptionPane.WARNING_MESSAGE);
                             }
 
                         } while (flag2 == 0);
-                        switch (option2) {
+                        switch (genreOption) {
                             case 1:
                                 setGenre2("Rock");
                                 GenreFilter(songs);
@@ -85,28 +87,28 @@ public class FilterSong extends MusicLibrary implements IPlayer {
 
                     } while (flag2 != 2);
                     break;
+
                 case 2:
                     int flag3 = 0;
-                    int option3 = 0;
+                    int yearOption = 0;
                     do {
                         do {
-                            System.out.println("");
-                            System.out.println("Por favor ingrese el año que desea filtrar o 1 para regresar al menú anterior");
-                            System.out.println("");
-                            System.out.println("    1. Menú anterior");
-                            System.out.println("");
-                            option3 = input.nextInt();
-
-                            if (option3 > 1 && option3 <= 2022) {
+                            try {
+                                yearOption = Integer.parseInt(JOptionPane.showInputDialog("Por favor ingrese el año que desea filtrar o 1 para regresar al menú anterior" + "\n"
+                                        + "1. Menú anterior" + "\n"));
+                            } catch (Exception e) {
+                                JOptionPane.showMessageDialog(null, "El valor de tipo String contiene caracteres no numéricos", "ERROR", JOptionPane.ERROR_MESSAGE);
+                                flag3 = 0;
+                                yearOption = 0;
+                            }
+                            if (yearOption > 1 && yearOption <= 2022) {
                                 flag3 = 1;
-                                setYear2(option3);
+                                setYear2(yearOption);
                                 YearFilter(songs);
-                            } else if (option3 == 1) {
+                            } else if (yearOption == 1) {
                                 flag3 = 2;
                             } else {
-                                System.out.println("--------------------------------");
-                                System.out.println("No disponible, vuelva a intentar");
-                                System.out.println("--------------------------------");
+                                JOptionPane.showMessageDialog(null, "Opción no disponible, vuelva a intentar", "Alerta", JOptionPane.WARNING_MESSAGE);
                             }
 
                         } while (flag3 == 0);
@@ -114,6 +116,7 @@ public class FilterSong extends MusicLibrary implements IPlayer {
                     } while (flag3 != 2);
 
                     break;
+
                 case 3:
                     flag = 2;
                     break;
@@ -132,22 +135,18 @@ public class FilterSong extends MusicLibrary implements IPlayer {
      * @param songs
      */
     public void GenreFilter(Songs[] songs) {
-        int optionPlay = 0;
+        //int optionPlay = 0;
         System.out.println("Lista de canciones del Genero " + getGenre2());
         for (int i = 0; i < songs.length; i++) {
             if (songs[i].getGenre().equals(getGenre2())) {
                 System.out.println(songs[i].getIdentifier() + ". " + songs[i].getTitle());
             }
-
         }
-        System.out.println("");
-        System.out.println("Desea reproducir Lista, para SI marque 1 para NO marque 0");
-        optionPlay = input.nextInt();
-
-        if (optionPlay == 1) {
+        if (JOptionPane.showConfirmDialog(null, "Desea reproducir Lista", "PREGUNTA", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             toPlay();
         }
     }
+
     /**
      * Este método permite recorrer el arreglo de la lista de canciones y
      * mostrar en consola la lista acorde al año indicado por el usuario
@@ -157,7 +156,6 @@ public class FilterSong extends MusicLibrary implements IPlayer {
     public void YearFilter(Songs[] songs) {
         System.out.println("Lista de canciones del año " + getYear2() + " son:");
         int songCounter = 0;
-        int optionPlay = 0;
         for (int i = 0; i < songs.length; i++) {
             if (songs[i].getYear() == getYear2()) {
                 songCounter++;
@@ -166,35 +164,35 @@ public class FilterSong extends MusicLibrary implements IPlayer {
 
         }
         if (songCounter == 0) {
-            System.out.println("No hay canciones en la biblioteca para ese año");
+            JOptionPane.showMessageDialog(null, "No hay canciones en la biblioteca para ese año", "Not found", JOptionPane.INFORMATION_MESSAGE);
         } else {
-            System.out.println("");
-            System.out.println("Desea reproducir Lista, para SI marque 1 para NO marque 0");
-            optionPlay = input.nextInt();
-
-            if (optionPlay == 1) {
+            if (JOptionPane.showConfirmDialog(null, "Desea reproducir Lista", "PREGUNTA", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
                 toPlay();
             }
         }
     }
+
     /**
      * @return the genre
      */
     public String getGenre2() {
         return genre2;
     }
+
     /**
      * @param genre the genre to set
      */
     public void setGenre2(String genre) {
         this.genre2 = genre;
     }
+
     /**
      * @return the year2
      */
     public int getYear2() {
         return year2;
     }
+
     /**
      * @param year2 the year2 to set
      */
@@ -204,8 +202,7 @@ public class FilterSong extends MusicLibrary implements IPlayer {
 
     @Override
     public void toPlay() {
-        System.out.println("Reproduciendo música");
-
+        JOptionPane.showMessageDialog(null, "Reproduciendo Música", "Play", JOptionPane.INFORMATION_MESSAGE);
     }
 
     @Override
